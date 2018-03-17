@@ -7,6 +7,7 @@ import math
 
 
 
+
 def get_home_location(visits):
 	total=[]
 	keys=[]
@@ -14,17 +15,11 @@ def get_home_location(visits):
 	time_format = "%H:%M:%S"
 	selected=[]
 	selected=[]
+	hours=0
 	for visit in visits:
 		visit[0]='%.3f' % visit[0]
 		visit[1]='%.3f' % visit[1]
-		diff = visit[3]-visit[2]
-		days = math.ceil((diff.total_seconds()/3600.0)/24)
-
-
-		if days==0:
-			hours=12
-		else:
-			hours=days*12
+		
 		arr_time=datetime.strptime("20:00:00", time_format)
 		dep_time=datetime.strptime("08:00:00", time_format)
 		exp_arr = datetime.combine(visit[2].date(),arr_time.time())
@@ -49,7 +44,11 @@ def get_home_location(visits):
 		elif visit[3] < exp_dep:
 			hours-= (exp_dep- visit[3]).seconds/3600.0
 		
+		diff = visit[3]-visit[2]
+		days = math.ceil((exp_dep- exp_arr).total_seconds()/3600.0/24)
 
+		hours=hours + days*12
+		
 		selected.append([visit[0],visit[1],hours])
 
 
@@ -63,8 +62,8 @@ def get_home_location(visits):
 		keys.append(key)
 
 
-
 	if max(total)>=30.0:
 		return keys[total.index(max(total))]
 	else:
 		return "Sorrrry!  Your customer doesn't have a home!"
+
