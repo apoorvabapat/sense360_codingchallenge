@@ -10,8 +10,12 @@ Assumptions:
 
 
 Instructions:
-	1. Entry point: get_home_location(visits) where visits is a list of lists. 
-	2. Each list has elements: [latitude, longitude, datetime(arrival_time), datetime(depart_time)]
+	1. Entry point: get_home_location(visits) where visits is a list of dictionaries.
+	2. Each dictionary has a format:
+            {'latitude': 1.1,
+            'longitude': 2.2
+            'actual_depart': datetime.datetime(2018, 3, 19, 8, 0),
+            'actual_arrival': datetime.datetime(2018, 3, 18, 20, 0),}
 	3. Return tuple(latitude, longitude) if Home location found, else an explanatory string.
 
 

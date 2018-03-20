@@ -3,6 +3,7 @@ from itertools import groupby
 import numpy as np
 from datetime import timedelta
 import math
+import dataset
 
 
 
@@ -53,6 +54,7 @@ def get_home_location(visits):
 
 
 	for key, rows in groupby(selected, lambda x: (x[0], x[1])):
+		print key
 		rows= tuple(rows)
 		sum1=0.0
 
@@ -66,4 +68,9 @@ def get_home_location(visits):
 		return keys[total.index(max(total))]
 	else:
 		return "Sorrrry!  Your customer doesn't have a home!"
+
+
+data=dataset.test_case_1()
+print "data", data
+get_home_location(data)
 
