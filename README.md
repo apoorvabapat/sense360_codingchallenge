@@ -5,6 +5,8 @@ Coding Language: Python
 
 
 Assumptions:
+
+
 	1. Arrival and Departure dates are valid.
 	
 	
@@ -12,6 +14,8 @@ Assumptions:
 
 
 Instructions:
+
+
 	1. Entry point: get_home_location(visits) where visits is a list of dictionaries.
 	
 	
